@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using System.Web;
 using System.Xml;
 using Models;
+using System.Net;
 
 namespace Helper
 {
@@ -55,12 +56,7 @@ namespace Helper
             }
         }
 
-        public void XmlToEntity(string xml)
-        {
-            XmlDocument postObj = new XmlDocument();
-            postObj.LoadXml(xml);
-            
-        }
+       
 
         public TextMsg Received_TextToModel(HttpContext context)
         {
@@ -105,6 +101,70 @@ namespace Helper
                      "</xml>";
 
             return textpl;
+        }
+
+
+        public string GetAccess_token(string appid,string appsecret)
+        {
+            string url = string.Format("https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid={0}&secret={1}", appid, appsecret);
+            string context = PushGetData(url);
+            context=context.Substring(17, context.Length - 37);
+            return context;
+
+
+        }
+
+
+        public string PushMenu(string Access_token, string MenuJson)
+        {
+            string posturl = "https://api.weixin.qq.com/cgi-bin/menu/create?access_token="+Access_token;
+            Stream outstream = null;
+            Stream instream = null;
+            StreamReader sr = null;
+            HttpWebResponse response = null;
+            HttpWebRequest request = null;
+            Encoding encoding = Encoding.UTF8;
+            byte[] data = encoding.GetBytes(MenuJson);
+            // 准备请求...
+            try
+            {
+                // 设置参数
+                request = WebRequest.Create(posturl) as HttpWebRequest;
+                CookieContainer cookieContainer = new CookieContainer();
+                request.CookieContainer = cookieContainer;
+                request.AllowAutoRedirect = true;
+                request.Method = "POST";
+                request.ContentType = "application/x-www-form-urlencoded";
+                request.ContentLength = data.Length;
+                outstream = request.GetRequestStream();
+                outstream.Write(data, 0, data.Length);
+                outstream.Close();
+                //发送请求并获取相应回应数据
+                response = request.GetResponse() as HttpWebResponse;
+                //直到request.GetResponse()程序才开始向目标网页发送Post请求
+                instream = response.GetResponseStream();
+                sr = new StreamReader(instream, encoding);
+                //返回结果网页（html）代码
+                string content = sr.ReadToEnd();
+                string err = string.Empty;
+                return content;
+            }
+            catch (Exception ex)
+            {
+                string err = ex.Message;
+                return string.Empty;
+            }
+        }
+
+        private string PushGetData(string url)
+        {
+            HttpWebRequest myRequest = (HttpWebRequest)WebRequest.Create(url);
+            myRequest.Method = "GET";
+            HttpWebResponse myResponse = (HttpWebResponse)myRequest.GetResponse();
+            StreamReader reader = new StreamReader(myResponse.GetResponseStream(), Encoding.UTF8);
+            string content = reader.ReadToEnd();
+            reader.Close();
+            return content;
         }
     }
 }
