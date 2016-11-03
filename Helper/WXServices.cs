@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Web;
 using System.Xml;
+using Models;
 
 namespace Helper
 {
@@ -61,35 +62,39 @@ namespace Helper
             
         }
 
-        public string ReceivedText(HttpContext context)
+        public TextMsg Received_TextToModel(HttpContext context)
         {
-            //获取post的xml
-            string postString= GetPostString(context);
-
+            //微信被动消息会post过来xml
+            string xmlstr= GetPostString(context);
             XmlDocument postObj = new XmlDocument();
-            postObj.LoadXml(postString);
-
+            postObj.LoadXml(xmlstr);
+            //解析xml到实体
+            TextMsg textmsg = new TextMsg();
             XmlNodeList xmllist_msgtype = postObj.GetElementsByTagName("MsgType");
             XmlNodeList xmllist_tousername = postObj.GetElementsByTagName("ToUserName");
             XmlNodeList xmllist_fromUsername = postObj.GetElementsByTagName("FromUserName");
             XmlNodeList xmllist_createtime = postObj.GetElementsByTagName("CreateTime");
             XmlNodeList xmllist_Content = postObj.GetElementsByTagName("Content");
-            if(xmllist_msgtype.Count<=0||xmllist_msgtype.Count>1)
+            XmlNodeList xmllist_MsgId = postObj.GetElementsByTagName("MsgId");
+            try
             {
-                //TODO:发送解析错误的消息
+                textmsg.MsgType = xmllist_msgtype[0].InnerText;
+                textmsg.ToUserName = xmllist_tousername[0].InnerText;
+                textmsg.FromUserName = xmllist_fromUsername[0].InnerText;
+                textmsg.CreateTime =Convert.ToInt32( xmllist_createtime[0].InnerText);
+                textmsg.Content = xmllist_Content[0].InnerText;
+                textmsg.MsgId = Convert.ToInt64( xmllist_MsgId[0].InnerText);
             }
-            Models.Msg msg = new Models.Msg();
+            catch(Exception ee)
+            {
+                //todo:解析文本消息异常处理
+            }
 
-            msg.MsgType = xmllist_msgtype[0].InnerText;
-            msg.ToUserName = xmllist_tousername[0].InnerText;
-            msg.FromUserName = xmllist_fromUsername[0].InnerText;
-            msg.CreateTime = Convert.ToInt32( xmllist_createtime[0].InnerText);
-            msg.Content = "珊珊,笑脸，对不起";
+            return textmsg;
+        }
 
-
-
-
-
+        public string SendText(TextMsg msg)
+        {
             string textpl = string.Empty;
             textpl = "<xml>" +
                      "<ToUserName><![CDATA[" + msg.FromUserName + "]]></ToUserName>" +

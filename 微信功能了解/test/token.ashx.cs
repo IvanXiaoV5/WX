@@ -7,6 +7,8 @@ using Helper;
 using System.Net;
 using System.IO;
 using System.Text;
+using Models;
+
 
 namespace 微信功能了解.test
 {
@@ -37,8 +39,10 @@ namespace 微信功能了解.test
             
             if(context.Request.HttpMethod.ToLower()=="post")
             {
-                string recxml = ser.ReceivedText(context);
-                context.Response.Write(recxml);
+                TextMsg msg = ser.Received_TextToModel(context);
+                 string xmlstr= ser.SendText(msg);
+                 context.Response.Write(xmlstr);
+                
             }
             context.Response.Write("我是经过HelloHttpHandler处理的！");
 
