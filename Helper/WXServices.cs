@@ -39,7 +39,7 @@ namespace Helper
             }
         }
 
-        private string GetPostString(HttpContext context)
+        public string GetPostString(HttpContext context)
         {
             if(!context.Request.HttpMethod.ToLower().Equals("post"))
             {

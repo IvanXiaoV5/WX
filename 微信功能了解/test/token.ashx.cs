@@ -9,6 +9,7 @@ using System.IO;
 using System.Text;
 using Models;
 using Controller;
+using Dos.WeChat;
 
 
 namespace 微信功能了解.test
@@ -26,32 +27,52 @@ namespace 微信功能了解.test
             Controller.MsgCtrl col = new MsgCtrl();
             if(context.Request.HttpMethod.ToLower()=="get")
             {
-                string signature = context.Request.QueryString["signature"] + "";
-                string timestamp = context.Request.QueryString["timestamp"] + "";
-                string nonce = context.Request.QueryString["nonce"] + "";
-                string echostr = context.Request.QueryString["echostr"] + "";
-                string token = ConfigurationManager.AppSettings["token"];
+                //验证微信服务器
+                //string signature = context.Request.QueryString["signature"] + "";
+                //string timestamp = context.Request.QueryString["timestamp"] + "";
+                //string nonce = context.Request.QueryString["nonce"] + "";
+                //string echostr = context.Request.QueryString["echostr"] + "";
+                //string token = ConfigurationManager.AppSettings["token"];
                 
-                bool iswx = ser.IsWXserver(timestamp, nonce, token, signature);
-                if (iswx)
+                //bool iswx = ser.IsWXserver(timestamp, nonce, token, signature);
+                //if (iswx)
+                //{
+                //    context.Response.Write(echostr);
+                //}
+                if(!JoinToken.Join(new web.bll.MsgCall()))
                 {
-                    context.Response.Write(echostr);
+                    
+                    //签名未通过
                 }
+
             }
+            
             
             if(context.Request.HttpMethod.ToLower()=="post")
             {
-                col.RecAndSend(context);
+                string xml= ser.GetPostString(context);
+                //发送消息
+                //col.RecAndSend(context);
+                web.bll.MsgCall msg = new web.bll.MsgCall();
+
+                ResponseMsg resmsg = new ResponseMsg();
+                 ReceiveMsg getmsg=   Dos.WeChat.ReceiveMsg.Parse(xml);
+                switch(getmsg.MsgType)
+                {
+                    case EnumHelper.MsgType.Text:
+                        resmsg = msg.TextMsgCall((RecTextMsg)getmsg);
+                        break;
+                    case EnumHelper.MsgType.Voice:
+                        resmsg = msg.VoiceMsgCall((RecVoiceMsg)getmsg);
+                        break;
+                    case EnumHelper.MsgType.Image:
+                        resmsg = msg.ImageMsgCall((RecImgMsg)getmsg);
+                        break;
+                }
+                
+                 xml= "<xml>"+resmsg.InnerToXml()+"</xml>";
+                context.Response.Write(xml);
             }
-            
-
-            ////菜单
-            //string appid=ConfigurationManager.AppSettings["appid"];
-            //string appsecret=ConfigurationManager.AppSettings["appsecret"];
-            //col.PushMenu(appid, appsecret,"");
-
-            
-            
 
         }
 
