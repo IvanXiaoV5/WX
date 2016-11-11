@@ -134,7 +134,7 @@ namespace Helper
                 request.CookieContainer = cookieContainer;
                 request.AllowAutoRedirect = true;
                 request.Method = "POST";
-                request.ContentType = "application/x-www-form-urlencoded";
+                request.ContentType = "application/x-www-form-urlencoded;charset=utf-8";
                 request.ContentLength = data.Length;
                 outstream = request.GetRequestStream();
                 outstream.Write(data, 0, data.Length);

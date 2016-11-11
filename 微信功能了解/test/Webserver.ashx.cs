@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Configuration;
 using Controller;
+using System.Text;
 
 namespace web.test
 {
@@ -31,6 +32,7 @@ namespace web.test
         {
             string menudata= context.Request.Params["menudata"];
 
+            //menudata = Encoding.UTF8.GetString(Encoding.Default.GetBytes(menudata));
             Controller.MsgCtrl col = new MsgCtrl();
             //菜单
             string appid = ConfigurationManager.AppSettings["appid"];

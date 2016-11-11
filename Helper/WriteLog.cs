@@ -38,7 +38,9 @@ namespace Helper
                         sw.WriteLine("================================Response Start==========================================");
                         sw.WriteLine(DateTime.Now);
                         sw.Write(msg);
+                        sw.WriteLine("");
                         sw.WriteLine("================================Response End==========================================");
+                        sw.WriteLine("");
                         break;
                 }
 
