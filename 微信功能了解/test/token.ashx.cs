@@ -12,6 +12,7 @@ using Controller;
 using Dos.WeChat;
 
 
+
 namespace 微信功能了解.test
 {
     /// <summary>
@@ -22,10 +23,16 @@ namespace 微信功能了解.test
 
         public void ProcessRequest(HttpContext context)
         {
+           
             context.Response.ContentType = "text/plain";
             WXServices ser = new WXServices();
             Controller.MsgCtrl col = new MsgCtrl();
-            if(context.Request.HttpMethod.ToLower()=="get")
+
+
+            string xml = ser.GetPostString(context);
+            WriteLog.Write(xml, TypeEmum.Request);
+
+            if (context.Request.HttpMethod.ToLower()=="get")
             {
                 //验证微信服务器
                 //string signature = context.Request.QueryString["signature"] + "";
@@ -44,16 +51,20 @@ namespace 微信功能了解.test
                     
                     //签名未通过
                 }
-
             }
             
             
             if(context.Request.HttpMethod.ToLower()=="post")
             {
-                string xml= ser.GetPostString(context);
+                
                 //发送消息
                 //col.RecAndSend(context);
-                web.bll.MsgCall msg = new web.bll.MsgCall();
+
+               
+
+                
+
+                    web.bll.MsgCall msg = new web.bll.MsgCall();
 
                 ResponseMsg resmsg = new ResponseMsg();
                  ReceiveMsg getmsg=   Dos.WeChat.ReceiveMsg.Parse(xml);
@@ -68,9 +79,14 @@ namespace 微信功能了解.test
                     case EnumHelper.MsgType.Image:
                         resmsg = msg.ImageMsgCall((RecImgMsg)getmsg);
                         break;
+                    case EnumHelper.MsgType.Event:
+                        resmsg = msg.EventMsgCall((RecEventMsg)getmsg);
+                        break;
                 }
                 
                  xml= "<xml>"+resmsg.InnerToXml()+"</xml>";
+                //把发送的信息也记录下来
+                Helper.WriteLog.Write(xml, TypeEmum.Response);
                 context.Response.Write(xml);
             }
 

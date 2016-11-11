@@ -1,0 +1,50 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>测试</title>
+	<meta charset="utf-8" />
+    <style>
+        .string{
+            height:300px;
+            width:100%;
+        }
+        .btn_group{
+            padding-bottom:5px;
+        }
+    </style>
+    <script type="text/javascript" src="js/jquery.min.js"></script>
+    <script>
+        function btn_post_click()
+        {
+            var poststring = $("#string").val();
+            $.ajax({
+                type: "post",
+                url: "./test/token.ashx",
+                data: poststring,
+                success: function (data) {
+                    $("#reust").text(data);
+            }
+            });
+        }
+
+        $(function () {
+            $("#btn_post").click(function () {
+                btn_post_click();
+            });
+        });
+    </script>
+</head>
+<body>
+    <div class="btn_group">
+        <input type="button" id="btn_post" value="POST提交" />
+        <input type="button" id="btn_post" disabled="disabled" value="Get提交" />
+    </div>
+    <div>
+        <textarea id="string" class="string"></textarea>
+    </div>
+    
+    <div id="reust"></div>
+    
+</body>
+</html>

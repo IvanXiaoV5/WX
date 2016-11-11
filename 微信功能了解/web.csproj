@@ -72,6 +72,8 @@
   <ItemGroup>
     <Content Include="Config.aspx" />
     <Content Include="js\jquery.min.js" />
+    <Content Include="log.aspx" />
+    <Content Include="post.html" />
     <Content Include="test\token.ashx" />
     <Content Include="packages.config" />
     <Content Include="LICENSE" />
@@ -98,6 +100,13 @@
     </Compile>
     <Compile Include="Config.aspx.designer.cs">
       <DependentUpon>Config.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="log.aspx.cs">
+      <DependentUpon>log.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="log.aspx.designer.cs">
+      <DependentUpon>log.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="test\token.ashx.cs">
