@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
+  <metadata>
+    <id>Senparc.Weixin.Cache.Redis.RedLock</id>
+    <version>0.0.2</version>
+    <title>Senparc.Weixin.Cache.Redis.RedLock.dll</title>
+    <authors>苏震巍</authors>
+    <owners>苏震巍</owners>
+    <licenseUrl>https://github.com/JeffreySu/WeiXinMPSDK/blob/master/license.md</licenseUrl>
+    <projectUrl>https://github.com/JeffreySu/WeiXinMPSDK</projectUrl>
+    <iconUrl>http://sdk.weixin.senparc.com/Images/Logo.jpg</iconUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>微信公众账号SDK（Rendis分布式缓存库），开源项目：
+https://github.com/JeffreySu/WeiXinMPSDK
+
+fork from https://github.com/KidFashion/redlock-cs</description>
+    <summary>微信公众号SDK for C#</summary>
+    <releaseNotes>v0.0.1
+重写构造函数，提供更加灵活的参数配置。
+
+v0.0.2
+调整引用框架</releaseNotes>
+    <copyright>Senparc</copyright>
+    <tags>微信 weixin SDK C# JSSDK 微信支付 分布式 缓存 Redis</tags>
+    <dependencies>
+      <dependency id="StackExchange.Redis" version="1.0.488" />
+    </dependencies>
+  </metadata>
+</package>

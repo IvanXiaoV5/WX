@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+  <metadata>
+    <id>Enyim.Caching.Web</id>
+    <version>1.0.0.1</version>
+    <title>Memcached SessionState Provider</title>
+    <authors>Attila Kiskó</authors>
+    <owners>Attila Kiskó</owners>
+    <licenseUrl>http://www.apache.org/licenses/LICENSE-2.0</licenseUrl>
+    <projectUrl>https://github.com/enyim/memcached-providers</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Memcached SessionState providers</description>
+    <summary />
+    <tags>memcached enyim cache caching sessionstate session</tags>
+    <dependencies>
+      <dependency id="EnyimMemcached" version="2.11" />
+      <dependency id="Membase" version="2.14" />
+    </dependencies>
+  </metadata>
+</package>

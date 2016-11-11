@@ -1,0 +1,87 @@
+================================Request Start==========================================
+2016/11/11 9:32:54
+================================Request End==========================================
+================================Request Start==========================================
+2016/11/11 9:33:26
+================================Request End==========================================
+================================Request Start==========================================
+2016/11/11 9:33:26
+================================Request End==========================================
+================================Request Start==========================================
+2016/11/11 9:33:26
+================================Request End==========================================
+================================Request Start==========================================
+2016/11/11 9:33:26
+================================Request End==========================================
+================================Request Start==========================================
+2016-11-11 9:59:49
+================================Request End==========================================
+================================Request Start==========================================
+2016-11-11 10:00:26
+================================Request End==========================================
+================================Request Start==========================================
+2016-11-11 10:00:37
+ddd================================Request End==========================================
+================================Request Start==========================================
+2016-11-11 10:00:58
+<xml></xml>================================Request End==========================================
+================================Request Start==========================================
+2016-11-11 10:01:59
+<xml></xml>================================Request End==========================================
+================================Request Start==========================================
+2016-11-11 10:07:46
+<xml><ToUserName><![CDATA[gh_836cd45b53d1]]></ToUserName>
+<FromUserName><![CDATA[o35TQs4jtsEnJ52SRP6Nlh2zsTQU]]></FromUserName>
+<CreateTime>1478766531</CreateTime>
+<MsgType><![CDATA[event]]></MsgType>
+<Event><![CDATA[CLICK]]></Event>
+<EventKey><![CDATA[V1001_TODAY_SINGER123eee]]></EventKey>
+</xml>================================Request End==========================================
+================================Request Start==========================================
+2016-11-11 10:37:14
+<xml><ToUserName><![CDATA[gh_836cd45b53d1]]></ToUserName>
+<FromUserName><![CDATA[o35TQs4jtsEnJ52SRP6Nlh2zsTQU]]></FromUserName>
+<CreateTime>1478766531</CreateTime>
+<MsgType><![CDATA[event]]></MsgType>
+<Event><![CDATA[CLICK]]></Event>
+<EventKey><![CDATA[V1001_TODAY_SINGER123eee]]></EventKey>
+</xml>================================Request End==========================================
+================================Response Start==========================================
+2016-11-11 10:37:14
+<xml><ToUserName><![CDATA[o35TQs4jtsEnJ52SRP6Nlh2zsTQU]]></ToUserName>
+<FromUserName><![CDATA[gh_836cd45b53d1]]></FromUserName>
+<CreateTime>1478860634</CreateTime>
+<MsgType><![CDATA[text]]></MsgType>
+<Content><![CDATA[]]></Content></xml>================================Response End==========================================
+================================Request Start==========================================
+2016-11-11 10:49:20
+<xml><ToUserName><![CDATA[gh_836cd45b53d1]]></ToUserName>
+<FromUserName><![CDATA[o35TQs4jtsEnJ52SRP6Nlh2zsTQU]]></FromUserName>
+<CreateTime>1478766531</CreateTime>
+<MsgType><![CDATA[event]]></MsgType>
+<Event><![CDATA[CLICK]]></Event>
+<EventKey><![CDATA[V1001_TODAY_SINGER123eee]]></EventKey>
+</xml>================================Request End==========================================
+================================Response Start==========================================
+2016-11-11 10:50:43
+<xml><ToUserName><![CDATA[o35TQs4jtsEnJ52SRP6Nlh2zsTQU]]></ToUserName>
+<FromUserName><![CDATA[gh_836cd45b53d1]]></FromUserName>
+<CreateTime>1478861360</CreateTime>
+<MsgType><![CDATA[text]]></MsgType>
+<Content><![CDATA[]]></Content></xml>================================Response End==========================================
+================================Request Start==========================================
+2016-11-11 10:56:55
+<xml><ToUserName><![CDATA[gh_836cd45b53d1]]></ToUserName>
+<FromUserName><![CDATA[o35TQs4jtsEnJ52SRP6Nlh2zsTQU]]></FromUserName>
+<CreateTime>1478832928</CreateTime>
+<MsgType><![CDATA[event]]></MsgType>
+<Event><![CDATA[CLICK]]></Event>
+<EventKey><![CDATA[V1001_GOOD123eee]]></EventKey>
+</xml>================================Request End==========================================
+================================Response Start==========================================
+2016-11-11 10:57:09
+<xml><ToUserName><![CDATA[o35TQs4jtsEnJ52SRP6Nlh2zsTQU]]></ToUserName>
+<FromUserName><![CDATA[gh_836cd45b53d1]]></FromUserName>
+<CreateTime>1478861815</CreateTime>
+<MsgType><![CDATA[text]]></MsgType>
+<Content><![CDATA[您点击了测试菜单按钮！]]></Content></xml>================================Response End==========================================
