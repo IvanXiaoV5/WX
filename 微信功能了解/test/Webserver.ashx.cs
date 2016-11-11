@@ -24,6 +24,9 @@ namespace web.test
                 case "pushMenu":
                     response= PushMenu(context);
                     break;
+                case "getMenu":
+                    response = GetMenu();
+                    break;
             }
             context.Response.Write(response);
         }
@@ -41,6 +44,16 @@ namespace web.test
             return tmp;
 
         }
+
+        public string GetMenu()
+        {
+            Helper.WXServices ws = new Helper.WXServices();
+            string appid = ConfigurationManager.AppSettings["appid"];
+            string appsecret = ConfigurationManager.AppSettings["appsecret"];
+            string menu= ws.GetMenu(appid, appsecret);
+            return menu;
+        }
+
 
         public bool IsReusable
         {

@@ -114,6 +114,13 @@ namespace Helper
 
         }
 
+        public string GetMenu(string appid,string secret)
+        {
+            string access_token= GetAccess_token(appid, secret);
+            string geturl = "https://api.weixin.qq.com/cgi-bin/menu/get?access_token=" + access_token;
+            string contxt= PushGetData(geturl);
+            return contxt;
+        }
 
         public string PushMenu(string Access_token, string MenuJson)
         {
@@ -156,7 +163,7 @@ namespace Helper
             }
         }
 
-        private string PushGetData(string url)
+        public string PushGetData(string url)
         {
             HttpWebRequest myRequest = (HttpWebRequest)WebRequest.Create(url);
             myRequest.Method = "GET";

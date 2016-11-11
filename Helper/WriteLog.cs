@@ -32,7 +32,9 @@ namespace Helper
                         sw.WriteLine("================================Request Start==========================================");
                         sw.WriteLine(DateTime.Now);
                         sw.Write(msg);
+                        sw.WriteLine("");
                         sw.WriteLine("================================Request End==========================================");
+                        sw.WriteLine("");
                         break;
                     case TypeEmum.Response:
                         sw.WriteLine("================================Response Start==========================================");
@@ -73,7 +75,7 @@ namespace Helper
                     //return sr.ReadToEnd();
                     StringBuilder sb = new StringBuilder();
                     
-                    while (!string.IsNullOrWhiteSpace(html = sr.ReadLine()))
+                    while ((html = sr.ReadLine())!=null)
                     {
                         sb.Append(HttpContext.Current.Server.HtmlEncode( html)+"<br/>");
                     }

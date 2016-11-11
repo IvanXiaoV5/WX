@@ -10,11 +10,12 @@ namespace web
 {
     public partial class log : System.Web.UI.Page
     {
+        public string logstr;
         protected void Page_Load(object sender, EventArgs e)
         {
-            string log= Helper.WriteLog.ReadLogForHtml();
+             logstr= Helper.WriteLog.ReadLogForHtml();
 
-            ViewState.Add("log", log);
+            ViewState.Add("log", logstr);
         }
 
         protected void btn_dellog_Click(object sender, EventArgs e)

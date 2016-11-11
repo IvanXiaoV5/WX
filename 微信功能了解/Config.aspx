@@ -18,6 +18,10 @@
             $("#setMenu").click(function () {
                 submitdata();
             });
+
+            $("#getMenu").click(function () {
+                getdata();
+            });
         });
 
 
@@ -32,12 +36,24 @@
                 }
             });
         }
+
+        function getdata() {
+           
+            $.ajax({
+                type: "get",
+                url: "test/Webserver.ashx?method=getMenu",
+                success: function (data) {
+                    $("#menudata").val(data)
+                }
+            });
+        }
     </script>
 </head>
 <body>
     <div>
         <div class="left">
-            <input type="button" value="修改菜单" id="setMenu" /><span id="info"></span>
+            <input type="button" value="修改菜单" id="setMenu" />
+            <input type="button" value="查询菜单" id="getMenu" />
         </div>
         <div class="right">
             <textarea id="menudata" ></textarea>

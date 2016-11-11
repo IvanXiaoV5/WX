@@ -12,7 +12,7 @@
         <asp:Button ID="btn_dellog" runat="server" Text="删除今天日志" OnClick="btn_dellog_Click" />
         
     <div>
-    <%=ViewState["log"] %>
+    <%=logstr %>
     </div>
     </form>
 </body>
