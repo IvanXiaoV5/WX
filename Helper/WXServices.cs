@@ -81,7 +81,7 @@ namespace Helper
                 textmsg.Content = xmllist_Content[0].InnerText;
                 textmsg.MsgId = Convert.ToInt64( xmllist_MsgId[0].InnerText);
             }
-            catch(Exception ee)
+            catch
             {
                 //todo:解析文本消息异常处理
             }
