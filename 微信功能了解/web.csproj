@@ -75,12 +75,19 @@
     <Content Include="js\jquery.min.js" />
     <Content Include="log.aspx" />
     <Content Include="post.html" />
+    <Content Include="Style\bootstrap\css\bootstrap-theme.css" />
+    <Content Include="Style\bootstrap\css\bootstrap-theme.min.css" />
+    <Content Include="Style\bootstrap\css\bootstrap.css" />
+    <Content Include="Style\bootstrap\css\bootstrap.min.css" />
+    <Content Include="Style\bootstrap\js\bootstrap.js" />
+    <Content Include="Style\bootstrap\js\bootstrap.min.js" />
     <Content Include="test\token.ashx" />
     <Content Include="packages.config" />
     <Content Include="LICENSE" />
     <None Include="Properties\PublishProfiles\file.pubxml" />
     <None Include="Properties\PublishProfiles\wx.pubxml" />
     <Content Include="test\Webserver.ashx" />
+    <Content Include="Style\bootstrap\config.json" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -126,7 +133,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Style\bootstrap\" />
+    <Folder Include="Style\bootstrap\fonts\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Controller\Controller.csproj">

@@ -7,6 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <title><%=ConfigurationManager.AppSettings["SystemName"]+"" %></title>
     <script src="../js/jquery.min.js"></script>
+    
 </head>
 <body>
 
