@@ -71,15 +71,27 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Config.aspx" />
+    <Content Include="gov\reg.aspx" />
     <Content Include="js\jquery.min.js" />
+    <Content Include="js\jquery.validate.min.js" />
+    <Content Include="js\messages_zh.js" />
     <Content Include="log.aspx" />
     <Content Include="post.html" />
+    <Content Include="Style\bootstrap\css\bootstrap-theme.css" />
+    <Content Include="Style\bootstrap\css\bootstrap-theme.min.css" />
+    <Content Include="Style\bootstrap\css\bootstrap.css" />
+    <Content Include="Style\bootstrap\css\bootstrap.min.css" />
+    <Content Include="Style\bootstrap\js\bootstrap.js" />
+    <Content Include="Style\bootstrap\js\bootstrap.min.js" />
+    <Content Include="Style\css.css" />
     <Content Include="test\token.ashx" />
     <Content Include="packages.config" />
     <Content Include="LICENSE" />
+    <Content Include="bll\GovHandler.ashx" />
     <None Include="Properties\PublishProfiles\file.pubxml" />
     <None Include="Properties\PublishProfiles\wx.pubxml" />
     <Content Include="test\Webserver.ashx" />
+    <Content Include="Style\bootstrap\config.json" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -93,6 +105,9 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="bll\GovHandler.ashx.cs">
+      <DependentUpon>GovHandler.ashx</DependentUpon>
+    </Compile>
     <Compile Include="bll\MsgCall.cs" />
     <Compile Include="Config.aspx.cs">
       <DependentUpon>Config.aspx</DependentUpon>
@@ -100,6 +115,13 @@
     </Compile>
     <Compile Include="Config.aspx.designer.cs">
       <DependentUpon>Config.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="gov\reg.aspx.cs">
+      <DependentUpon>reg.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="gov\reg.aspx.designer.cs">
+      <DependentUpon>reg.aspx</DependentUpon>
     </Compile>
     <Compile Include="log.aspx.cs">
       <DependentUpon>log.aspx</DependentUpon>
@@ -118,6 +140,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Style\bootstrap\fonts\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Controller\Controller.csproj">
