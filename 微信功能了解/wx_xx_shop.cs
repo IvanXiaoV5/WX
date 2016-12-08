@@ -14,9 +14,28 @@ namespace web
     
     public partial class wx_xx_shop
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public wx_xx_shop()
+        {
+            this.wx_xx_d_offal = new HashSet<wx_xx_d_offal>();
+            this.wx_xx_d_repertory = new HashSet<wx_xx_d_repertory>();
+            this.wx_xx_d_sterilize = new HashSet<wx_xx_d_sterilize>();
+            this.wx_xx_user = new HashSet<wx_xx_user>();
+        }
+    
         public int Id { get; set; }
         public string Name { get; set; }
         public string Address { get; set; }
-        public int Gorernment_Id { get; set; }
+        public int wx_xx_governmentId { get; set; }
+    
+        public virtual wx_xx_government wx_xx_government { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<wx_xx_d_offal> wx_xx_d_offal { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<wx_xx_d_repertory> wx_xx_d_repertory { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<wx_xx_d_sterilize> wx_xx_d_sterilize { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<wx_xx_user> wx_xx_user { get; set; }
     }
 }

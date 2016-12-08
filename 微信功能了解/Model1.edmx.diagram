@@ -5,12 +5,20 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="ed19d17d5f624734a57d2bf9bed07293" Name="Diagram1">
-        <EntityTypeShape EntityType="hbxlsModel.wx_xx_d_offal" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="hbxlsModel.wx_xx_d_repertory" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="hbxlsModel.wx_xx_d_sterilize" Width="1.5" PointX="5.5" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="hbxlsModel.wx_xx_government" Width="1.5" PointX="1.375" PointY="4.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="hbxlsModel.wx_xx_shop" Width="1.5" PointX="4.25" PointY="4.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="hbxlsModel.wx_xx_user" Width="1.5" PointX="7.375" PointY="3.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="hbxlsModel.wx_xx_d_offal" Width="1.5" PointX="7.25" PointY="2.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="hbxlsModel.wx_xx_d_repertory" Width="2" PointX="2.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="hbxlsModel.wx_xx_d_sterilize" Width="2.375" PointX="8.875" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="hbxlsModel.wx_xx_government" Width="2.125" PointX="1.375" PointY="4.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="hbxlsModel.wx_xx_shop" Width="2.25" PointX="4.25" PointY="4.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="hbxlsModel.wx_xx_user" Width="1.5" PointX="10.5" PointY="0.875" IsExpanded="true" />
+        <AssociationConnector Association="hbxlsModel.wx_xx_governmentwx_xx_shop" />
+        <AssociationConnector Association="hbxlsModel.wx_xx_userwx_xx_d_offal" />
+        <AssociationConnector Association="hbxlsModel.wx_xx_userwx_xx_d_repertory" />
+        <AssociationConnector Association="hbxlsModel.wx_xx_userwx_xx_d_sterilize" />
+        <AssociationConnector Association="hbxlsModel.wx_xx_shopwx_xx_d_offal" />
+        <AssociationConnector Association="hbxlsModel.wx_xx_shopwx_xx_d_repertory" />
+        <AssociationConnector Association="hbxlsModel.wx_xx_shopwx_xx_d_sterilize" />
+        <AssociationConnector Association="hbxlsModel.wx_xx_shopwx_xx_user" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

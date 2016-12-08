@@ -21,9 +21,12 @@ namespace web
         public string BatchNum { get; set; }
         public string Expiration_date { get; set; }
         public string Supplier { get; set; }
-        public string Purchasing_Openid { get; set; }
         public string Acceptor_Openid { get; set; }
         public System.DateTime Date { get; set; }
-        public int Shop_id { get; set; }
+        public int wx_xx_userId { get; set; }
+        public int wx_xx_shopId { get; set; }
+    
+        public virtual wx_xx_user wx_xx_user { get; set; }
+        public virtual wx_xx_shop wx_xx_shop { get; set; }
     }
 }

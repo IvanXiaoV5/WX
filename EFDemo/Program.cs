@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using web;
 
 namespace EFDemo
 {
@@ -16,29 +17,31 @@ namespace EFDemo
 
 
             #region 添加
-            //2,声明一个User实体
-            wx_xx_user user1 = new wx_xx_user();
-            user1.cnname = "肖雄";
-            user1.open_id = "ddd";
-            user1.shop_id = 123;
+            //2,声明一个实体
+            wx_xx_government gov = new wx_xx_government();
+            gov.Name = "123";
+            gov.Address = "123123";
+            gov.Username = "123";
+            gov.Password = "123";
 
 
             //3 ,告诉EF 对上面的实体做一个插入操作
 
-            //dbContext.wx_xx_user.Add(user1);
+
+            dbContext.wx_xx_government.Add(gov);
 
             //4,告诉上下午把实体的变化保存到数据库
-            //dbContext.SaveChanges();
+            dbContext.SaveChanges();
 
             #endregion
 
             #region 更新
 
-            wx_xx_user user2 = new wx_xx_user();
-            user2.Id = 2;
-            user2.open_id = "ccc";
-            user2.cnname = "aaa";
-            user2.shop_id = 1111;
+            //wx_xx_user user2 = new wx_xx_user();
+            //user2.Id = 2;
+            //user2.open_id = "ccc";
+            //user2.cnname = "aaa";
+            //user2.shop_id = 1111;
 
             //告诉上下文对此实体进行更新
             //dbContext.Entry<wx_xx_user>(user2).State = System.Data.Entity.EntityState.Modified;

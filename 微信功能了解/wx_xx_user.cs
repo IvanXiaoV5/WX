@@ -14,9 +14,25 @@ namespace web
     
     public partial class wx_xx_user
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public wx_xx_user()
+        {
+            this.wx_xx_d_offal = new HashSet<wx_xx_d_offal>();
+            this.wx_xx_d_repertory = new HashSet<wx_xx_d_repertory>();
+            this.wx_xx_d_sterilize = new HashSet<wx_xx_d_sterilize>();
+        }
+    
         public int Id { get; set; }
         public string open_id { get; set; }
         public string cnname { get; set; }
-        public int shop_id { get; set; }
+        public int wx_xx_shopId { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<wx_xx_d_offal> wx_xx_d_offal { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<wx_xx_d_repertory> wx_xx_d_repertory { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<wx_xx_d_sterilize> wx_xx_d_sterilize { get; set; }
+        public virtual wx_xx_shop wx_xx_shop { get; set; }
     }
 }

@@ -17,7 +17,10 @@ namespace web
         public int Id { get; set; }
         public double Weight { get; set; }
         public System.DateTime Datetime { get; set; }
-        public int shop_id { get; set; }
-        public string open_id { get; set; }
+        public int wx_xx_userId { get; set; }
+        public int wx_xx_shopId { get; set; }
+    
+        public virtual wx_xx_user wx_xx_user { get; set; }
+        public virtual wx_xx_shop wx_xx_shop { get; set; }
     }
 }

@@ -14,10 +14,19 @@ namespace web
     
     public partial class wx_xx_government
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public wx_xx_government()
+        {
+            this.wx_xx_shop = new HashSet<wx_xx_shop>();
+        }
+    
         public int Id { get; set; }
         public string Name { get; set; }
         public string Address { get; set; }
         public string Username { get; set; }
         public string Password { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<wx_xx_shop> wx_xx_shop { get; set; }
     }
 }

@@ -21,6 +21,26 @@
                 }
                 
                 );
+            $("#submit").click(function () {
+                $.ajax({
+                    type: "post",
+                    url: "../bll/GovHandler.ashx?method=govreg",
+                    data: $("#reg").serialize(),
+                    success: function (data) {
+                        var json = $.parseJSON(data);
+                        switch(json.type)
+                        {
+                            case "Error":
+                                $("#errorinfo").text(json.value);
+                                $("#errorinfo").css("display","block");
+                                break;
+                            case "Success":
+                                location.href = json.value;
+                        }
+                    }
+                });
+            });
+            
            
         });
 
@@ -33,28 +53,25 @@
 </head>
 <body>
     <div class="jumbotron">
-            <h1><%=ConfigurationManager.AppSettings["SystemName"]+"" %></h1>
-            <p>用信息化提升办事效率!<a class="btn btn-primary btn-sm" href="#" role="button">登 录</a></p>
-            <p></p>
-        </div>
+        <h1><%=ConfigurationManager.AppSettings["SystemName"]+"" %></h1>
+        <p>用信息化提升办事效率!<a class="btn btn-primary btn-sm" href="#" role="button">登 录</a></p>
+        <p></p>
+    </div>
     <div class="container-fluid">
-        
-
-
         <!--注册表格-->
         <div class="form">
             <div class="page-header">
                 <h1>管理单位注册 <small>请认真填写相关信息</small></h1>
             </div>
             <div id="errorinfo" class="alert alert-danger errorinfo" role="alert"></div>
-            <form id="reg" class="reg" method="post" action="www.qq.com">
+            <form id="reg" class="reg" method="post" action="#">
                 <div class="input-group">
                     <span class="input-group-addon"><span class="glyphicon glyphicon-user"></span></span>
                     <input type="text" name="username" class="form-control" placeholder="用户名" required  maxlength="64"/>
                 </div>
                 <div class="input-group">
                     <span class="input-group-addon"><span class="glyphicon glyphicon-info-sign"></span></span>
-                    <input type="password" name="passowrd" class="form-control" placeholder="密 码" minlength="6" maxlength="64" required/>
+                    <input type="password" name="password" class="form-control" placeholder="密 码" minlength="6" maxlength="64" required/>
                 </div>
                 <div class="input-group">
                     <span class="input-group-addon"><span class="glyphicon glyphicon-tag"></span></span>
@@ -65,7 +82,7 @@
                     <input type="text" name="address" class="form-control" placeholder="单位地址" required maxlength="256" />
                 </div>
                 
-                <input type="button" class="btn btn-primary btn-lg btn-block" value="注 册" />
+                <input type="button" id="submit" class="btn btn-primary btn-lg btn-block" value="注 册" />
             </form>
 
         </div>

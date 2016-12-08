@@ -81,6 +81,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Config.aspx" />
+    <Content Include="gov\main.aspx" />
     <Content Include="gov\reg.aspx" />
     <Content Include="js\jquery.min.js" />
     <Content Include="js\jquery.validate.min.js" />
@@ -91,6 +92,7 @@
       <DependentUpon>Model1.edmx</DependentUpon>
       <LastGenOutput>Model1.Context.cs</LastGenOutput>
     </Content>
+    <Content Include="Model1.edmx.sql" />
     <Content Include="Model1.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>Model1.edmx</DependentUpon>
@@ -142,6 +144,13 @@
     </Compile>
     <Compile Include="Config.aspx.designer.cs">
       <DependentUpon>Config.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="gov\main.aspx.cs">
+      <DependentUpon>main.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="gov\main.aspx.designer.cs">
+      <DependentUpon>main.aspx</DependentUpon>
     </Compile>
     <Compile Include="gov\reg.aspx.cs">
       <DependentUpon>reg.aspx</DependentUpon>
@@ -203,6 +212,10 @@
     <Folder Include="Style\bootstrap\fonts\" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Common\Common.csproj">
+      <Project>{228b7a0c-2e34-4fa8-b43b-f371b6f7e4fb}</Project>
+      <Name>Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Controller\Controller.csproj">
       <Project>{4cbd7788-1c63-402e-abb5-cea75e053e67}</Project>
       <Name>Controller</Name>
