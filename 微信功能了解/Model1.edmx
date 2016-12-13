@@ -4,208 +4,209 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="hbxlsModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2005" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-        <EntityType Name="wx_xx_d_offal">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="int" Nullable="false" />
-          <Property Name="Weight" Type="float" Nullable="false" />
-          <Property Name="Datetime" Type="datetime" Nullable="false" />
-          <Property Name="wx_xx_userId" Type="int" Nullable="false" />
-          <Property Name="wx_xx_shopId" Type="int" Nullable="false" />
-        </EntityType>
-        <EntityType Name="wx_xx_d_repertory">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="int" Nullable="false" />
-          <Property Name="CargoName" Type="nvarchar" MaxLength="64" Nullable="false" />
-          <Property Name="Type" Type="nchar" MaxLength="10" Nullable="false" />
-          <Property Name="Quantity" Type="float" Nullable="false" />
-          <Property Name="BatchNum" Type="nvarchar" MaxLength="128" />
-          <Property Name="Expiration_date" Type="nvarchar" MaxLength="16" />
-          <Property Name="Supplier" Type="nvarchar" MaxLength="64" Nullable="false" />
-          <Property Name="Acceptor_Openid" Type="varchar" MaxLength="64" Nullable="false" />
-          <Property Name="Date" Type="datetime" Nullable="false" />
-          <Property Name="wx_xx_userId" Type="int" Nullable="false" />
-          <Property Name="wx_xx_shopId" Type="int" Nullable="false" />
-        </EntityType>
-        <EntityType Name="wx_xx_d_sterilize">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="int" Nullable="false" />
-          <Property Name="Date" Type="datetime" Nullable="false" />
-          <Property Name="Product" Type="nchar" MaxLength="10" Nullable="false" />
-          <Property Name="wx_xx_userId" Type="int" Nullable="false" />
-          <Property Name="wx_xx_shopId" Type="int" Nullable="false" />
-        </EntityType>
-        <EntityType Name="wx_xx_government">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Name" Type="nvarchar" MaxLength="64" Nullable="false" />
-          <Property Name="Address" Type="nvarchar" MaxLength="256" />
-          <Property Name="Username" Type="nvarchar" MaxLength="64" Nullable="false" />
-          <Property Name="Password" Type="nvarchar" MaxLength="64" Nullable="false" />
-        </EntityType>
-        <EntityType Name="wx_xx_shop">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="int" Nullable="false" />
-          <Property Name="Name" Type="nvarchar" MaxLength="64" Nullable="false" />
-          <Property Name="Address" Type="nvarchar" MaxLength="256" />
-          <Property Name="wx_xx_governmentId" Type="int" Nullable="false" />
-        </EntityType>
-        <EntityType Name="wx_xx_user">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="int" Nullable="false" />
-          <Property Name="open_id" Type="varchar" MaxLength="64" Nullable="false" />
-          <Property Name="cnname" Type="nvarchar" MaxLength="16" Nullable="false" />
-          <Property Name="wx_xx_shopId" Type="int" Nullable="false" />
-        </EntityType>
-        <Association Name="FK_wx_xx_governmentwx_xx_shop">
-          <End Role="wx_xx_government" Type="Self.wx_xx_government" Multiplicity="1" />
-          <End Role="wx_xx_shop" Type="Self.wx_xx_shop" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="wx_xx_government">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="wx_xx_shop">
-              <PropertyRef Name="wx_xx_governmentId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_wx_xx_shopwx_xx_d_offal">
-          <End Role="wx_xx_shop" Type="Self.wx_xx_shop" Multiplicity="1" />
-          <End Role="wx_xx_d_offal" Type="Self.wx_xx_d_offal" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="wx_xx_shop">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="wx_xx_d_offal">
-              <PropertyRef Name="wx_xx_shopId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_wx_xx_shopwx_xx_d_repertory">
-          <End Role="wx_xx_shop" Type="Self.wx_xx_shop" Multiplicity="1" />
-          <End Role="wx_xx_d_repertory" Type="Self.wx_xx_d_repertory" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="wx_xx_shop">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="wx_xx_d_repertory">
-              <PropertyRef Name="wx_xx_shopId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_wx_xx_shopwx_xx_d_sterilize">
-          <End Role="wx_xx_shop" Type="Self.wx_xx_shop" Multiplicity="1" />
-          <End Role="wx_xx_d_sterilize" Type="Self.wx_xx_d_sterilize" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="wx_xx_shop">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="wx_xx_d_sterilize">
-              <PropertyRef Name="wx_xx_shopId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_wx_xx_shopwx_xx_user">
-          <End Role="wx_xx_shop" Type="Self.wx_xx_shop" Multiplicity="1" />
-          <End Role="wx_xx_user" Type="Self.wx_xx_user" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="wx_xx_shop">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="wx_xx_user">
-              <PropertyRef Name="wx_xx_shopId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_wx_xx_userwx_xx_d_offal">
-          <End Role="wx_xx_user" Type="Self.wx_xx_user" Multiplicity="1" />
-          <End Role="wx_xx_d_offal" Type="Self.wx_xx_d_offal" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="wx_xx_user">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="wx_xx_d_offal">
-              <PropertyRef Name="wx_xx_userId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_wx_xx_userwx_xx_d_repertory">
-          <End Role="wx_xx_user" Type="Self.wx_xx_user" Multiplicity="1" />
-          <End Role="wx_xx_d_repertory" Type="Self.wx_xx_d_repertory" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="wx_xx_user">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="wx_xx_d_repertory">
-              <PropertyRef Name="wx_xx_userId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_wx_xx_userwx_xx_d_sterilize">
-          <End Role="wx_xx_user" Type="Self.wx_xx_user" Multiplicity="1" />
-          <End Role="wx_xx_d_sterilize" Type="Self.wx_xx_d_sterilize" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="wx_xx_user">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="wx_xx_d_sterilize">
-              <PropertyRef Name="wx_xx_userId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <EntityContainer Name="hbxlsModelStoreContainer">
-          <EntitySet Name="wx_xx_d_offal" EntityType="Self.wx_xx_d_offal" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="wx_xx_d_repertory" EntityType="Self.wx_xx_d_repertory" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="wx_xx_d_sterilize" EntityType="Self.wx_xx_d_sterilize" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="wx_xx_government" EntityType="Self.wx_xx_government" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="wx_xx_shop" EntityType="Self.wx_xx_shop" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="wx_xx_user" EntityType="Self.wx_xx_user" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK_wx_xx_governmentwx_xx_shop" Association="Self.FK_wx_xx_governmentwx_xx_shop">
-            <End Role="wx_xx_government" EntitySet="wx_xx_government" />
-            <End Role="wx_xx_shop" EntitySet="wx_xx_shop" />
-          </AssociationSet>
-          <AssociationSet Name="FK_wx_xx_shopwx_xx_d_offal" Association="Self.FK_wx_xx_shopwx_xx_d_offal">
-            <End Role="wx_xx_shop" EntitySet="wx_xx_shop" />
-            <End Role="wx_xx_d_offal" EntitySet="wx_xx_d_offal" />
-          </AssociationSet>
-          <AssociationSet Name="FK_wx_xx_shopwx_xx_d_repertory" Association="Self.FK_wx_xx_shopwx_xx_d_repertory">
-            <End Role="wx_xx_shop" EntitySet="wx_xx_shop" />
-            <End Role="wx_xx_d_repertory" EntitySet="wx_xx_d_repertory" />
-          </AssociationSet>
-          <AssociationSet Name="FK_wx_xx_shopwx_xx_d_sterilize" Association="Self.FK_wx_xx_shopwx_xx_d_sterilize">
-            <End Role="wx_xx_shop" EntitySet="wx_xx_shop" />
-            <End Role="wx_xx_d_sterilize" EntitySet="wx_xx_d_sterilize" />
-          </AssociationSet>
-          <AssociationSet Name="FK_wx_xx_shopwx_xx_user" Association="Self.FK_wx_xx_shopwx_xx_user">
-            <End Role="wx_xx_shop" EntitySet="wx_xx_shop" />
-            <End Role="wx_xx_user" EntitySet="wx_xx_user" />
-          </AssociationSet>
-          <AssociationSet Name="FK_wx_xx_userwx_xx_d_offal" Association="Self.FK_wx_xx_userwx_xx_d_offal">
-            <End Role="wx_xx_user" EntitySet="wx_xx_user" />
-            <End Role="wx_xx_d_offal" EntitySet="wx_xx_d_offal" />
-          </AssociationSet>
-          <AssociationSet Name="FK_wx_xx_userwx_xx_d_repertory" Association="Self.FK_wx_xx_userwx_xx_d_repertory">
-            <End Role="wx_xx_user" EntitySet="wx_xx_user" />
-            <End Role="wx_xx_d_repertory" EntitySet="wx_xx_d_repertory" />
-          </AssociationSet>
-          <AssociationSet Name="FK_wx_xx_userwx_xx_d_sterilize" Association="Self.FK_wx_xx_userwx_xx_d_sterilize">
-            <End Role="wx_xx_user" EntitySet="wx_xx_user" />
-            <End Role="wx_xx_d_sterilize" EntitySet="wx_xx_d_sterilize" />
-          </AssociationSet>
-        </EntityContainer>
-      </Schema></edmx:StorageModels>
+    <Schema Namespace="hbxlsModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2005" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="hbxlsModelStoreContainer">
+    <EntitySet Name="wx_xx_d_offal" EntityType="hbxlsModel.Store.wx_xx_d_offal" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="wx_xx_d_repertory" EntityType="hbxlsModel.Store.wx_xx_d_repertory" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="wx_xx_d_sterilize" EntityType="hbxlsModel.Store.wx_xx_d_sterilize" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="wx_xx_government" EntityType="hbxlsModel.Store.wx_xx_government" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="wx_xx_shop" EntityType="hbxlsModel.Store.wx_xx_shop" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="wx_xx_user" EntityType="hbxlsModel.Store.wx_xx_user" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="wx_xx_governmentwx_xx_shop" Association="hbxlsModel.Store.wx_xx_governmentwx_xx_shop">
+      <End Role="wx_xx_government" EntitySet="wx_xx_government" />
+      <End Role="wx_xx_shop" EntitySet="wx_xx_shop" />
+    </AssociationSet>
+    <AssociationSet Name="wx_xx_userwx_xx_d_offal" Association="hbxlsModel.Store.wx_xx_userwx_xx_d_offal">
+      <End Role="wx_xx_user" EntitySet="wx_xx_user" />
+      <End Role="wx_xx_d_offal" EntitySet="wx_xx_d_offal" />
+    </AssociationSet>
+    <AssociationSet Name="wx_xx_userwx_xx_d_repertory" Association="hbxlsModel.Store.wx_xx_userwx_xx_d_repertory">
+      <End Role="wx_xx_user" EntitySet="wx_xx_user" />
+      <End Role="wx_xx_d_repertory" EntitySet="wx_xx_d_repertory" />
+    </AssociationSet>
+    <AssociationSet Name="wx_xx_userwx_xx_d_sterilize" Association="hbxlsModel.Store.wx_xx_userwx_xx_d_sterilize">
+      <End Role="wx_xx_user" EntitySet="wx_xx_user" />
+      <End Role="wx_xx_d_sterilize" EntitySet="wx_xx_d_sterilize" />
+    </AssociationSet>
+    <AssociationSet Name="wx_xx_shopwx_xx_d_offal" Association="hbxlsModel.Store.wx_xx_shopwx_xx_d_offal">
+      <End Role="wx_xx_shop" EntitySet="wx_xx_shop" />
+      <End Role="wx_xx_d_offal" EntitySet="wx_xx_d_offal" />
+    </AssociationSet>
+    <AssociationSet Name="wx_xx_shopwx_xx_d_repertory" Association="hbxlsModel.Store.wx_xx_shopwx_xx_d_repertory">
+      <End Role="wx_xx_shop" EntitySet="wx_xx_shop" />
+      <End Role="wx_xx_d_repertory" EntitySet="wx_xx_d_repertory" />
+    </AssociationSet>
+    <AssociationSet Name="wx_xx_shopwx_xx_d_sterilize" Association="hbxlsModel.Store.wx_xx_shopwx_xx_d_sterilize">
+      <End Role="wx_xx_shop" EntitySet="wx_xx_shop" />
+      <End Role="wx_xx_d_sterilize" EntitySet="wx_xx_d_sterilize" />
+    </AssociationSet>
+    <AssociationSet Name="wx_xx_shopwx_xx_user" Association="hbxlsModel.Store.wx_xx_shopwx_xx_user">
+      <End Role="wx_xx_shop" EntitySet="wx_xx_shop" />
+      <End Role="wx_xx_user" EntitySet="wx_xx_user" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="wx_xx_d_offal">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="Weight" Type="float" Nullable="false" />
+    <Property Name="Datetime" Type="datetime" Nullable="false" />
+    <Property Name="wx_xx_userId" Type="int" Nullable="false" />
+    <Property Name="wx_xx_shopId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="wx_xx_d_repertory">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="CargoName" Type="nvarchar" Nullable="false" MaxLength="64" />
+    <Property Name="Type" Type="nchar" Nullable="false" MaxLength="10" />
+    <Property Name="Quantity" Type="float" Nullable="false" />
+    <Property Name="BatchNum" Type="nvarchar" Nullable="true" MaxLength="128" />
+    <Property Name="Expiration_date" Type="nvarchar" Nullable="true" MaxLength="16" />
+    <Property Name="Supplier" Type="nvarchar" Nullable="false" MaxLength="64" />
+    <Property Name="Acceptor_Openid" Type="varchar" Nullable="false" MaxLength="64" />
+    <Property Name="Date" Type="datetime" Nullable="false" />
+    <Property Name="wx_xx_userId" Type="int" Nullable="false" />
+    <Property Name="wx_xx_shopId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="wx_xx_d_sterilize">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="Date" Type="datetime" Nullable="false" />
+    <Property Name="Product" Type="nchar" Nullable="false" MaxLength="10" />
+    <Property Name="wx_xx_userId" Type="int" Nullable="false" />
+    <Property Name="wx_xx_shopId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="wx_xx_government">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="64" />
+    <Property Name="Address" Type="nvarchar" Nullable="true" MaxLength="256" />
+    <Property Name="Username" Type="nvarchar" Nullable="false" MaxLength="64" />
+    <Property Name="Password" Type="nvarchar" Nullable="false" MaxLength="64" />
+  </EntityType>
+  <EntityType Name="wx_xx_shop">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="64" />
+    <Property Name="Address" Type="nvarchar" Nullable="true" MaxLength="256" />
+    <Property Name="wx_xx_governmentId" Type="int" Nullable="false" />
+    <Property Name="order" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="wx_xx_user">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="open_id" Type="varchar" Nullable="false" MaxLength="64" />
+    <Property Name="cnname" Type="nvarchar" Nullable="false" MaxLength="16" />
+    <Property Name="wx_xx_shopId" Type="int" Nullable="false" />
+  </EntityType>
+  <Association Name="wx_xx_governmentwx_xx_shop">
+    <End Role="wx_xx_government" Type="hbxlsModel.Store.wx_xx_government" Multiplicity="1" />
+    <End Role="wx_xx_shop" Type="hbxlsModel.Store.wx_xx_shop" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="wx_xx_government">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="wx_xx_shop">
+        <PropertyRef Name="wx_xx_governmentId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="wx_xx_userwx_xx_d_offal">
+    <End Role="wx_xx_user" Type="hbxlsModel.Store.wx_xx_user" Multiplicity="1" />
+    <End Role="wx_xx_d_offal" Type="hbxlsModel.Store.wx_xx_d_offal" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="wx_xx_user">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="wx_xx_d_offal">
+        <PropertyRef Name="wx_xx_userId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="wx_xx_userwx_xx_d_repertory">
+    <End Role="wx_xx_user" Type="hbxlsModel.Store.wx_xx_user" Multiplicity="1" />
+    <End Role="wx_xx_d_repertory" Type="hbxlsModel.Store.wx_xx_d_repertory" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="wx_xx_user">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="wx_xx_d_repertory">
+        <PropertyRef Name="wx_xx_userId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="wx_xx_userwx_xx_d_sterilize">
+    <End Role="wx_xx_user" Type="hbxlsModel.Store.wx_xx_user" Multiplicity="1" />
+    <End Role="wx_xx_d_sterilize" Type="hbxlsModel.Store.wx_xx_d_sterilize" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="wx_xx_user">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="wx_xx_d_sterilize">
+        <PropertyRef Name="wx_xx_userId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="wx_xx_shopwx_xx_d_offal">
+    <End Role="wx_xx_shop" Type="hbxlsModel.Store.wx_xx_shop" Multiplicity="1" />
+    <End Role="wx_xx_d_offal" Type="hbxlsModel.Store.wx_xx_d_offal" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="wx_xx_shop">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="wx_xx_d_offal">
+        <PropertyRef Name="wx_xx_shopId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="wx_xx_shopwx_xx_d_repertory">
+    <End Role="wx_xx_shop" Type="hbxlsModel.Store.wx_xx_shop" Multiplicity="1" />
+    <End Role="wx_xx_d_repertory" Type="hbxlsModel.Store.wx_xx_d_repertory" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="wx_xx_shop">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="wx_xx_d_repertory">
+        <PropertyRef Name="wx_xx_shopId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="wx_xx_shopwx_xx_d_sterilize">
+    <End Role="wx_xx_shop" Type="hbxlsModel.Store.wx_xx_shop" Multiplicity="1" />
+    <End Role="wx_xx_d_sterilize" Type="hbxlsModel.Store.wx_xx_d_sterilize" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="wx_xx_shop">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="wx_xx_d_sterilize">
+        <PropertyRef Name="wx_xx_shopId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="wx_xx_shopwx_xx_user">
+    <End Role="wx_xx_shop" Type="hbxlsModel.Store.wx_xx_shop" Multiplicity="1" />
+    <End Role="wx_xx_user" Type="hbxlsModel.Store.wx_xx_user" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="wx_xx_shop">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="wx_xx_user">
+        <PropertyRef Name="wx_xx_shopId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="hbxlsModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -275,6 +276,7 @@
           <NavigationProperty Name="wx_xx_d_repertory" Relationship="hbxlsModel.wx_xx_shopwx_xx_d_repertory" FromRole="wx_xx_shop" ToRole="wx_xx_d_repertory" />
           <NavigationProperty Name="wx_xx_d_sterilize" Relationship="hbxlsModel.wx_xx_shopwx_xx_d_sterilize" FromRole="wx_xx_shop" ToRole="wx_xx_d_sterilize" />
           <NavigationProperty Name="wx_xx_user" Relationship="hbxlsModel.wx_xx_shopwx_xx_user" FromRole="wx_xx_shop" ToRole="wx_xx_user" />
+          <Property Name="order" Type="String" Nullable="false" />
         </EntityType>
         <EntityType Name="wx_xx_user">
           <Key>
@@ -488,6 +490,7 @@
           <ScalarProperty Name="Name" ColumnName="Name" />
           <ScalarProperty Name="Address" ColumnName="Address" />
           <ScalarProperty Name="wx_xx_governmentId" ColumnName="wx_xx_governmentId" />
+          <ScalarProperty Name="order" ColumnName="order" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

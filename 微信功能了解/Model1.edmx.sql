@@ -2,7 +2,7 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 12/05/2016 19:32:59
+-- Date Created: 12/08/2016 21:41:47
 -- Generated from EDMX file: C:\Users\XiaoXiong\Source\Repos\WX\微信功能了解\Model1.edmx
 -- --------------------------------------------------
 
@@ -17,6 +17,30 @@ GO
 -- Dropping existing FOREIGN KEY constraints
 -- --------------------------------------------------
 
+IF OBJECT_ID(N'[dbo].[FK_wx_xx_governmentwx_xx_shop]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[wx_xx_shop] DROP CONSTRAINT [FK_wx_xx_governmentwx_xx_shop];
+GO
+IF OBJECT_ID(N'[dbo].[FK_wx_xx_shopwx_xx_d_offal]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[wx_xx_d_offal] DROP CONSTRAINT [FK_wx_xx_shopwx_xx_d_offal];
+GO
+IF OBJECT_ID(N'[dbo].[FK_wx_xx_shopwx_xx_d_repertory]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[wx_xx_d_repertory] DROP CONSTRAINT [FK_wx_xx_shopwx_xx_d_repertory];
+GO
+IF OBJECT_ID(N'[dbo].[FK_wx_xx_shopwx_xx_d_sterilize]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[wx_xx_d_sterilize] DROP CONSTRAINT [FK_wx_xx_shopwx_xx_d_sterilize];
+GO
+IF OBJECT_ID(N'[dbo].[FK_wx_xx_shopwx_xx_user]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[wx_xx_user] DROP CONSTRAINT [FK_wx_xx_shopwx_xx_user];
+GO
+IF OBJECT_ID(N'[dbo].[FK_wx_xx_userwx_xx_d_offal]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[wx_xx_d_offal] DROP CONSTRAINT [FK_wx_xx_userwx_xx_d_offal];
+GO
+IF OBJECT_ID(N'[dbo].[FK_wx_xx_userwx_xx_d_repertory]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[wx_xx_d_repertory] DROP CONSTRAINT [FK_wx_xx_userwx_xx_d_repertory];
+GO
+IF OBJECT_ID(N'[dbo].[FK_wx_xx_userwx_xx_d_sterilize]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[wx_xx_d_sterilize] DROP CONSTRAINT [FK_wx_xx_userwx_xx_d_sterilize];
+GO
 
 -- --------------------------------------------------
 -- Dropping existing tables
@@ -96,7 +120,8 @@ CREATE TABLE [dbo].[wx_xx_shop] (
     [Id] int  NOT NULL,
     [Name] nvarchar(64)  NOT NULL,
     [Address] nvarchar(256)  NULL,
-    [wx_xx_governmentId] int  NOT NULL
+    [wx_xx_governmentId] int  NOT NULL,
+    [order] nvarchar(max)  NOT NULL
 );
 GO
 

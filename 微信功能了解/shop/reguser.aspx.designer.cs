@@ -7,9 +7,9 @@
 // </自动生成>
 //------------------------------------------------------------------------------
 
-namespace web.gov {
+namespace web.shop {
     
     
-    public partial class main {
+    public partial class reguser {
     }
 }

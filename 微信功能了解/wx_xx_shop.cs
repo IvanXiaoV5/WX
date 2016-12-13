@@ -27,6 +27,7 @@ namespace web
         public string Name { get; set; }
         public string Address { get; set; }
         public int wx_xx_governmentId { get; set; }
+        public string order { get; set; }
     
         public virtual wx_xx_government wx_xx_government { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
