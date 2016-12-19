@@ -118,6 +118,7 @@
     <Content Include="Model1.edmx.diagram">
       <DependentUpon>Model1.edmx</DependentUpon>
     </Content>
+    <Content Include="bll\ShopHandler.ashx" />
     <None Include="Properties\PublishProfiles\file.pubxml" />
     <None Include="Properties\PublishProfiles\wx.pubxml" />
     <Content Include="test\Webserver.ashx" />
@@ -139,6 +140,9 @@
       <DependentUpon>GovHandler.ashx</DependentUpon>
     </Compile>
     <Compile Include="bll\MsgCall.cs" />
+    <Compile Include="bll\ShopHandler.ashx.cs">
+      <DependentUpon>ShopHandler.ashx</DependentUpon>
+    </Compile>
     <Compile Include="Config.aspx.cs">
       <DependentUpon>Config.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
